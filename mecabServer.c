@@ -53,6 +53,7 @@ void session(CLIENT *client){
     long msglenFromClient;
     long msglenFromMecab;
     pid_t pid;
+    int status;
     if(pipe(PtoC) < 0){
         perror("pipe:PtoC");
         exit(1);
@@ -93,7 +94,7 @@ void session(CLIENT *client){
         close(client->sockfd);
         free(client);
         kill(pid, SIGKILL);
-
+        waitpid(pid, &status, 0);
     }else{
         perror("fork");
         exit(1);

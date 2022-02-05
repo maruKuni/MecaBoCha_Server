@@ -10,6 +10,7 @@
 #include <netinet/in.h>
 #include <pthread.h>
 #include <signal.h>
+#include <sys/wait.h>
 typedef struct CLIENT{
     int sockfd;
 }CLIENT;
